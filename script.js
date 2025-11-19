@@ -18,8 +18,9 @@ function getHumanChoice(){
 }
 
 
+let rounds = prompt("How many rounds you want to play")
 
-for(let i=0;i<5;i++){
+for(let i=0;i<rounds;i++){
     let humanChoice=getHumanChoice();
     let computerChoice=getComputerChoice();
     alert("you: "+humanChoice+"\n"+"Computer: "+computerChoice)
