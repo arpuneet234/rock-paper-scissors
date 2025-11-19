@@ -14,42 +14,59 @@ function getComputerChoice(){
 function getHumanChoice(){
     let humanChoice=prompt("Enter : rock , paper or scissors");
     humanChoice=humanChoice.toLowerCase();
-    console.log("you: "+humanChoice);
-   let computerChoice = getComputerChoice();
-   console.log("Computer: "+computerChoice);
-   playRound(humanChoice,computerChoice);
+    return humanChoice;
 }
+
+
+
+for(let i=0;i<5;i++){
+    let humanChoice=getHumanChoice();
+    let computerChoice=getComputerChoice();
+    alert("you: "+humanChoice+"\n"+"Computer: "+computerChoice)
+    playRound(humanChoice,computerChoice);
+    alert("Computer score  : "+ computerScore + "\n"+"Your score: "+ humanScore);
+    
+}
+alert("Computer final score  : "+ computerScore + "\n"+"Your  final  score: "+ humanScore);
+
+if(computerScore>humanScore)alert("FINAL WINNER IS COMPUTER")
+else if(computerScore<humanScore)alert("FINAL WINNER IS YOU")
+else alert("FINAL RESULT IS TIE")
 
 function playRound(humanChoice,computerChoice){
     if(humanChoice=="rock"&&computerChoice=="paper"){
-        console.log("Computer wins")
+        alert("Computer wins") 
+        computerScore++;
     }
     else if(humanChoice=="rock"&&computerChoice=="rock"){
-        console.log("Tie")
+        alert("Tie")
+       
     }
     else if(humanChoice=="rock"&&computerChoice=="scissors"){
-        console.log("You wins")
+        alert("You wins")
+         humanScore++;
     }
     else if(humanChoice=="paper"&&computerChoice=="paper"){
-        console.log("Tie")
+        alert("Tie")
     }
     else if(humanChoice=="paper"&&computerChoice=="rock"){
-        console.log("You wins")
+        alert("You wins")
+         humanScore++;
     }
     else if(humanChoice=="paper"&&computerChoice=="scissors"){
-        console.log("Computer wins")
+        alert("Computer wins")
+        computerScore++;
     }
     else if(humanChoice=="scissors"&&computerChoice=="paper"){
-        console.log("You wins")
+        alert("You wins")
+         humanScore++;
     }
     else if(humanChoice=="scissors"&&computerChoice=="rock"){
-        console.log("Computer wins")
+        alert("Computer wins")
+        computerScore++;
     }
     else if(humanChoice=="scissors"&&computerChoice=="scissors"){
-        console.log("Tie")
+        alert("Tie")
     }
-    
-
 }
 
-getHumanChoice();
