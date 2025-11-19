@@ -9,3 +9,10 @@ function getComputerChoice(){
 }
 
 console.log(getComputerChoice());
+
+function getHumanChoice(){
+    let humanChoice=prompt("Enter : rock , paper or scissors");
+    console.log(humanChoice);
+}
+
+getHumanChoice();
