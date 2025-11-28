@@ -1,6 +1,88 @@
 
-let humanScore=0;
-let computerScore=0;
+const buttons=document.querySelectorAll('button');
+buttons.forEach((button)=>{
+    button.addEventListener("click",playRound)
+
+})
+
+const compScore=document.querySelector("#compScore");
+const userScore=document.querySelector("#userScore");
+const uChoice=document.querySelector("#uChoice");
+const cChoice=document.querySelector('#cChoice');
+let computerScores=0;
+let userScores=0;
+
+
+
+
+function playRound(e){
+    let humanChoice = e.target.id;
+    let computerChoice=getComputerChoice();
+
+    cChoice.textContent=computerChoice;
+    uChoice.textContent=humanChoice;
+    
+
+    if(humanChoice=="rock"&&computerChoice=="paper"){
+        computerScores++;
+         compScore.textContent=computerScores;
+     }
+     else if(humanChoice=="rock"&&computerChoice=="rock"){
+            
+     }
+     else if(humanChoice=="rock"&&computerChoice=="scissors"){
+        userScores++;
+         userScore.textContent=userScores
+        
+     }
+     else if(humanChoice=="paper"&&computerChoice=="paper"){
+         
+     }
+     else if(humanChoice=="paper"&&computerChoice=="rock"){
+        
+         userScores++;
+         userScore.textContent=userScores
+         
+     }
+     else if(humanChoice=="paper"&&computerChoice=="scissors"){
+        computerScores++;
+         compScore.textContent=computerScores;
+     }
+     else if(humanChoice=="scissors"&&computerChoice=="paper"){
+         
+        userScores++;
+         userScore.textContent=userScores
+          
+     }
+     else if(humanChoice=="scissors"&&computerChoice=="rock"){
+         
+         computerScores++;
+         compScore.textContent=computerScores;
+     }
+     else if(humanChoice=="scissors"&&computerChoice=="scissors"){
+         
+     }
+
+     if(Number(computerScores)==5){
+        alert("COMPUTER WINS")
+        computerScores=0;
+        userScores=0;
+        compScore.textContent = 0;
+        userScore.textContent = 0;
+       
+     }
+     if(Number(userScores)==5){
+        alert("YOU WIN")
+        computerScores=0;
+        userScores=0;
+        compScore.textContent = 0;
+    userScore.textContent = 0;
+     }
+}
+
+
+
+
 function getComputerChoice(){
     let choice=Math.floor(Math.random()*12)+1;
     
@@ -10,64 +92,4 @@ function getComputerChoice(){
 }
 
 
-
-function getHumanChoice(){
-    let humanChoice=prompt("Enter : rock , paper or scissors");
-    humanChoice=humanChoice.toLowerCase();
-    return humanChoice;
-}
-
-
-let rounds = prompt("How many rounds you want to play")
-
-for(let i=0;i<rounds;i++){
-    let humanChoice=getHumanChoice();
-    let computerChoice=getComputerChoice();
-    alert("you: "+humanChoice+"\n"+"Computer: "+computerChoice)
-    playRound(humanChoice,computerChoice);
-    alert("Computer score  : "+ computerScore + "\n"+"Your score: "+ humanScore);
-    
-}
-alert("Computer final score  : "+ computerScore + "\n"+"Your  final  score: "+ humanScore);
-
-if(computerScore>humanScore)alert("FINAL WINNER IS COMPUTER")
-else if(computerScore<humanScore)alert("FINAL WINNER IS YOU")
-else alert("FINAL RESULT IS TIE")
-
-function playRound(humanChoice,computerChoice){
-    if(humanChoice=="rock"&&computerChoice=="paper"){
-        alert("Computer wins") 
-        computerScore++;
-    }
-    else if(humanChoice=="rock"&&computerChoice=="rock"){
-        alert("Tie")
-       
-    }
-    else if(humanChoice=="rock"&&computerChoice=="scissors"){
-        alert("You wins")
-         humanScore++;
-    }
-    else if(humanChoice=="paper"&&computerChoice=="paper"){
-        alert("Tie")
-    }
-    else if(humanChoice=="paper"&&computerChoice=="rock"){
-        alert("You wins")
-         humanScore++;
-    }
-    else if(humanChoice=="paper"&&computerChoice=="scissors"){
-        alert("Computer wins")
-        computerScore++;
-    }
-    else if(humanChoice=="scissors"&&computerChoice=="paper"){
-        alert("You wins")
-         humanScore++;
-    }
-    else if(humanChoice=="scissors"&&computerChoice=="rock"){
-        alert("Computer wins")
-        computerScore++;
-    }
-    else if(humanChoice=="scissors"&&computerChoice=="scissors"){
-        alert("Tie")
-    }
-}
 
